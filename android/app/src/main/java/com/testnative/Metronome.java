@@ -14,6 +14,8 @@ public class Metronome extends ReactContextBaseJavaModule {
     MediaPlayer music = MediaPlayer.create(getReactApplicationContext(), R.raw.pop);
     int val = 60;
 
+    Boolean temp;
+
 
     private final ReactApplicationContext
             reactContext;
@@ -22,6 +24,7 @@ public class Metronome extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
     }
+
 
     @Override
     public Map<String, Object> getConstants() {

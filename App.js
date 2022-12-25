@@ -1,42 +1,30 @@
 import { Animated, NativeModules, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native'
-import React, { useRef, useState } from 'react'
+import React, {  useRef, useState } from 'react'
 
 const { Metronome } = NativeModules;
-const { Val } = Metronome.getConstants();
-// const { test } = Metronome.increase();
-// console.log("Test:", test);
 
 const App = () => {
   const [event, setEvent] = useState(0)
   console.log("e:", event);
-
   const touch = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current
   const dimensions = useWindowDimensions()
-
   const [val, setVal] = useState(60)
+  const [stop1, setStop] = useState(false);
 
-
-
-  const play = async () => {
-
+  const play = () => {
     Metronome.play()
-    console.log("Start");
   }
+
   const stop = () => {
     console.log("Stop");
-    // Metronome.stop()
+    Metronome.stop()
   }
 
   const increase = async () => {
-
     const value = await Metronome.increase();
     setVal(value)
-
   }
-  // Metronome.increase()
 
-
-  // console.log(" jsjsj:", Val);
 
   const decrease = async () => {
     const value = await Metronome.decrease()
